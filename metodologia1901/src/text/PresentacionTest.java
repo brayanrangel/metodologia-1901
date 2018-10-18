@@ -23,7 +23,7 @@ public class PresentacionTest extends javax.swing.JFrame {
     
     public PresentacionTest() {
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(this);// centrar la ventana 
         
         //generar un arregle los radios button visuales 
         
@@ -50,7 +50,7 @@ public class PresentacionTest extends javax.swing.JFrame {
        opciones[4]=op5;
        
          
-        p1=new Pregunta("esta es la principall causa del cancer",opciones);
+        p1=new Pregunta("esta es la principal causa del cancer",opciones);
          etiquetaTitulo.setText(p1.titulo);
          for(int i=0;i<radios.length;i++){
              radios[i].setText(p1.opciones[i].titulo);         
@@ -114,7 +114,7 @@ public class PresentacionTest extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -127,9 +127,9 @@ public class PresentacionTest extends javax.swing.JFrame {
                     .addComponent(radioOp2))
                 .addGap(221, 221, 221))
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(160, 160, 160)
                 .addComponent(checarrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +164,10 @@ public class PresentacionTest extends javax.swing.JFrame {
                 break;
             }
         }
-        JOptionPane.showConfirmDialog(this,""+ evaluar(p1,radios[indiceSeleccionado])) ;
+        //verificar el radio button seleccionado 
+        System.out.println("el indice seleccionado es :"+indiceSeleccionado);
+        JOptionPane.showConfirmDialog(this,""+evaluar(p1, indiceSeleccionado));
+   
     }//GEN-LAST:event_checarrespuestaActionPerformed
 
     /**
@@ -213,18 +216,15 @@ public class PresentacionTest extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioOp5;
     // End of variables declaration//GEN-END:variables
 
-public boolean evaluar(Pregunta p,JRadioButton r){
-    boolean correcta =fal
-    for(int i=0;i<p.opciones.length;)
-        if (p1.opciones[i].titulo.equals(r.getText())){
-            if(p1.opciones[i].correcta){
-            correcta=true;
-            break;
-        }
-        }
-}
     
-
-
-
-
+    public boolean evaluar(Pregunta p, int indiceSeleccionado){
+        boolean correcta=false;
+        if(p.opciones[indiceSeleccionado].correcta){
+            correcta=true;
+            
+        }
+        return correcta;
+        
+        
+    }
+}
